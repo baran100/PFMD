@@ -1,4 +1,4 @@
-## Monances
+## Dragon Personal Finance Manager
 - Track expenses and incomes
 - Spend smarter and save more
 - Reach your goals
