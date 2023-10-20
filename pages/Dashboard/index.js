@@ -109,9 +109,18 @@ const DOM = {
     const expenseAmount = Transaction.expenses();
     const totalAmount = Transaction.total();
 
+    const cardTotal = document.querySelector('.card.total');
+    //const totalAmount = parseInt(cardTotal.getAttribute('data-amount'));
+    
+    const color = getColorForTransactionAmount(totalAmount);
+    
+    cardTotal.style.backgroundColor = color;
+    
+
     incomeDisplay.innerHTML = `<span style="color: ${getColorForTransactionAmount(incomeAmount)}">${Utils.formatCurrency(incomeAmount)}</span>`;
     expenseDisplay.innerHTML = `<span style="color: ${getColorForTransactionAmount(expenseAmount)}">${Utils.formatCurrency(expenseAmount)}</span>`;
-    totalDisplay.innerHTML = `<span style="color: ${getColorForTransactionAmount(totalAmount)}">${Utils.formatCurrency(totalAmount)}</span>`;
+    document.getElementById("totalDisplay").innerHTML = Utils.formatCurrency(Transaction.total() );
+  
   },
 
   clearTransactions() {
