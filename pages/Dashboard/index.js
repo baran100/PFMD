@@ -91,7 +91,7 @@ const DOM = {
       <td class="${CSSclass}">${amount}</td>
       <td class="date">${transaction.date}</td>
       <td>
-          <img onclick="Transaction.remove(${index})" src="./assets/x-circle.svg" class="remove-transaction" alt="Remover transação">
+          <img  src="./assets/edit.svg" class="edit-transaction" alt="Edit transaction">
       </td>
     `;
   
@@ -429,10 +429,11 @@ function calculateDailyBalance(transactions) {
 
 function getColorForTransactionAmount(amount) {
   if (amount > 0) {
-    return "green"; // برای مقادیر مثبت
+    return "#28D39A"; // برای مقادیر مثبت
   } else if (amount < 0) {
-    return "red"; // برای مقادیر منفی
+    return "#ff7782"; // برای مقادیر منفی
   } else {
-    return "gray"; // برای مقادیر صفر
+    return "#677483"; // برای مقادیر صفر
   }
 }
+

@@ -169,13 +169,25 @@
         <div id="form">
           <div class="modalTop">
             <h2>New Transaction</h2>
+          <div>
+            <i
+              class="material-icons delete-icon"
+              onclick="deleteTransaction()"
+            >
+              delete
+            </i>
             <span
               class="material-icons"
               id="close-modal-btn"
               onclick="Modal.close()"
-              >close</span
             >
+              close
+            </span>
           </div>
+
+
+          </div>
+          
           <form action="" onsubmit="Form.submit(event)">
             <div class="input-group">
               <label class="sr-only" for="description">Description</label>
