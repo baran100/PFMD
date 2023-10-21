@@ -85,7 +85,7 @@ const DOM = {
   innerHTMLTransaction(transaction, index) {
     const CSSclass = transaction.amount > 0 ? "income" : "expense";
     const amount = Utils.formatCurrency(transaction.amount);
-    const iconSrc = transaction.amount > 0 ? "assets/arrow_up.png" : "assets/arrow_down.png";
+    const iconSrc = transaction.amount > 0 ? "../assets/arrow_up.png" : "../assets/arrow_down.png";
   
     const html = `
       <td class="box"><img src="${iconSrc}" alt="${CSSclass}"></td>
