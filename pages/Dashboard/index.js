@@ -85,19 +85,17 @@ const DOM = {
   innerHTMLTransaction(transaction, index) {
     const CSSclass = transaction.amount > 0 ? "income" : "expense";
     const amount = Utils.formatCurrency(transaction.amount);
+    const iconSrc = transaction.amount > 0 ? "assets/arrow_up.png" : "assets/arrow_down.png";
   
     const html = `
+      <td class="box"><img src="${iconSrc}" alt="${CSSclass}"></td>
       <td class="description">${transaction.description}</td>
-      <td class="${CSSclass}">${amount}</td>
-      <td class="date">${transaction.date}</td>
-      <td>
-          <img  src="./assets/edit.svg" class="edit-transaction" alt="Edit transaction">
-      </td>
-    `;
+      <td style="
+      text-align: right;" class="${CSSclass}">${amount}</td>`;
   
     return html;
   },
-  
+
 
   //update balance cards (incomes, expenses and total)
   updateBalance() {
@@ -169,6 +167,8 @@ const Utils = {
 
     return value;
   },
+
+
 };
 
 const Form = {

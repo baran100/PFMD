@@ -345,3 +345,27 @@ canvas{
   border-radius: 8px; /* گوشه‌گرد کردن */
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-item {
+  flex: 1;
+  margin-left: auto;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+
+
+
