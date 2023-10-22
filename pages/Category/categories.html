@@ -36,16 +36,14 @@
           </div>
         </div>
         <div class="sidebar">
-          <a href="./dashboard.html" class="active">
+          <a href="../Dashboard/dashboard.html" >
             <span class="material-icons">grid_view</span>
             <p>Dashboard</p>
           </a>
-
-          <a href="../Category/categories.html">
+          <a href="./categories.html" class="active">
             <span class="material-icons">category</span>
             <p>Categories</p>
           </a>
-
           <a href="https://www.linkedin.com/in/vinicius-rodrigues-5897831b8/">
             <span class="material-icons">contact_page</span>
             <p>Contact</p>
@@ -63,77 +61,32 @@
         </div>
 
         <section id="balance">
-          <h2 class="sr-only">Balance</h2>
         
-          <div class="card-container">
-            <div class="card">
-              <h3>
-                <span>Incomes</span>
-                <img src="../assets/incomes.svg" alt="Imagem de entradas" />
-              </h3>
-              <p id="incomeDisplay">R$ 0,00</p>
-              <p id="dateDisplay"></p>
+          <div class="card">
+            <div class="card-container" style=" margin-bottom: 1.5rem;">
+              <h2>Categories List</h2>
+              <a id="newCategory" class="button_green btn btn-success " onclick="Modal.open()" href="#">+ Add New Category</a>
             </div>
-        
-            <div class="card">
-              <h3>
-                <span>Expenses</span>
-                <img style="transform: rotate(180deg);" src="../assets/expenses.svg" alt="Imagem de saídas" />
-              </h3>
-              <p id="expenseDisplay">R$ 0,00</p>
-            </div>
+            <!-- Expense Categories -->
+            <h3>Expense Categories</h3>
+            <ul id="expense-categories">
+                <!-- Expense categories will be listed here -->
+            </ul>
+
+            <!-- Income Categories -->
+            <h3>Income Categories</h3>
+            <ul id="income-categories">
+                <!-- Income categories will be listed here -->
+            </ul>
           </div>
-        
-          <div class="card total" data-amount="${totalAmount}">
-            <h3>
-              <span>Total</span>
-              <img class="total" src="../assets/total.svg" alt="Imagem de total" />
-            </h3>
-            <p id="totalDisplay">R$ 0,00</p>
-          </div>
+
         </section>
-        
-        <!--END OF BALANCED SECTION-------------------- -->
-
-        <section id="transaction">
-          <h2 class="sr-only">Transactions</h2>
-
-          <div class="last-transactions">
-            <div class="table-top">
-              <h2>Last Transactions</h2>
-
-              <button
-                href="#"
-                id="newTransaction"
-                class="button new"
-                onclick="Modal.open()"
-              >
-                + New Transaction
-              </button>
-            </div>
-
-            <div class="table-container">
-              <table id="data-table">
-                <!-- <thead>
-                  <tr>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th></th>
-                  </tr>
-                </thead> -->
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-        <!--END OF TRANSACTION SECTION-------------------- -->
-
-        <div class="addTransactionMobileButton">
+                <div class="addTransactionMobileButton">
           <button href="#" id="newTransactionMobile" onclick="Modal.open()">
             <span class="material-icons">add</span>
           </button>
         </div>
+
       </main>
 
       <div class="right">
@@ -162,9 +115,8 @@
             >
           </div>
         </div>
-
         <div class="analytics">
-          <h3>Chart | Balance</h3>
+          <h3>Categories group</h3>
           <div>
             <canvas id="myChart"></canvas>
           </div>
@@ -172,12 +124,11 @@
       </div>
       <!--END OF RIGHT - theme-toggler - menu-btn - balance chart -------------------- -->
     </div>
-
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal">
         <div id="form">
           <div class="modalTop">
-            <h2>New Transaction</h2>
+            <h2>New Category</h2>
           <div>
             <i
               class="material-icons delete-icon"
@@ -199,27 +150,13 @@
           
           <form action="" onsubmit="Form.submit(event)">
             <div class="input-group">
-              <label class="sr-only" for="description">Description</label>
+              <label class="sr-only" for="name">Name</label>
               <input
                 type="text"
-                id="description"
-                name="description"
-                placeholder="Description"
+                id="name"
+                name="name"
+                placeholder="Name"
               />
-            </div>
-
-            <div class="input-group">
-              <label class="sr-only" for="amount">Amount</label>
-              <input
-                type="number"
-                id="amount"
-                name="amount"
-                step="0.01"
-                placeholder="0.00"
-              />
-              <small class="help"
-                >Select "Income" to incomes and "Expense" to expenses</small
-              >
             </div>
 
             <div class="buttons-income-expense">
@@ -238,11 +175,6 @@
               </button>
             </div>
 
-            <div class="input-group">
-              <label class="sr-only" for="date">Date</label>
-              <input type="date" id="date" name="date" />
-            </div>
-
             <div class="actions">
               <!-- <a href="#" id="cancelTransaction" class="button cancel" onclick="Modal.close()">Cancelar</a> -->
               <button class="save">Confirm</button>
@@ -251,9 +183,29 @@
         </div>
       </div>
     </div>
-    
-    <!--END OF MODAL-------------------- -->
+    <script>
+      // Expense Categories
+      const expenseCategories = ['Food', 'Clothing', 'Transportation', 'Housing', 'Travel'];
 
+      // Income Categories
+      const incomeCategories = ['Salary', 'Sales', 'Investment', 'Rent'];
+
+      // Function to create a category list
+      function createCategoryList(categoryList, listId) {
+          const list = document.getElementById(listId);
+          categoryList.forEach(category => {
+              const listItem = document.createElement('li');
+              listItem.textContent = category;
+              list.appendChild(listItem);
+          });
+      }
+
+      // Create the Expense Categories list
+      createCategoryList(expenseCategories, 'expense-categories');
+
+      // Create the Income Categories list
+      createCategoryList(incomeCategories, 'income-categories');
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

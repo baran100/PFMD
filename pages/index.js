@@ -425,15 +425,13 @@ function calculateDailyBalance(transactions) {
   return dailyBalances;
 }
 
-
-
 function getColorForTransactionAmount(amount) {
   if (amount > 0) {
-    return "#28D39A"; // برای مقادیر مثبت
+    return "var(--color-green)"; // برای مقادیر مثبت
   } else if (amount < 0) {
-    return "#ff7782"; // برای مقادیر منفی
+    return "var(--color-red)"; // برای مقادیر منفی
   } else {
-    return "#677483"; // برای مقادیر صفر
+    return "var(--color-dark-variant)"; // برای مقادیر صفر
   }
 }
 

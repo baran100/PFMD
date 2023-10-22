@@ -198,6 +198,10 @@
     display: none;
   }
 
+  .card-container a#newCategory{
+    display: none;
+  }
+
   .addTransactionMobileButton #newTransactionMobile{
     padding: 0.5rem;
     display: flex;
