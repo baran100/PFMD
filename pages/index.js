@@ -1,18 +1,23 @@
 //Local Storage
 const Storage = {
-  get() {
-    return JSON.parse(localStorage.getItem("dev.finances:transaction")) || [];
+  getTransactions() {
+    return JSON.parse(localStorage.getItem("dpfm:transactions")) || [];
   },
-  set(transactions) {
-    localStorage.setItem(
-      "dev.finances:transaction",
-      JSON.stringify(transactions)
-    );
+  setTransactions(transactions) {
+    localStorage.setItem("dpfm:transactions", JSON.stringify(transactions));
+  },
+
+  getCategories() {
+    return JSON.parse(localStorage.getItem("dpfm:categories")) || [];
+  },
+  setCategories(categories) {
+    localStorage.setItem("dpfm:categories", JSON.stringify(categories));
   },
 };
 
+
 const Transaction = {
-  all: Storage.get(),
+  all: Storage.getTransactions(), 
 
   add(transaction) {
     //add transaction
@@ -50,6 +55,7 @@ const Transaction = {
     return Transaction.incomes() + Transaction.expenses();
   },
 };
+
 
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
@@ -256,6 +262,8 @@ const Form = {
   },
 };
 
+
+
 // ChartJS - doughnut chart - chart config
 var ctx = document.getElementById("myChart");
 var myDonutChart;
@@ -367,6 +375,9 @@ const AddChart = {
   },
 };
 
+
+
+
 const App = {
   init() {
     // Sort transactions by date (newest first)
@@ -376,7 +387,7 @@ const App = {
     Transaction.all.forEach(DOM.addTransaction);
 
     DOM.updateBalance();
-    Storage.set(Transaction.all.reverse());
+    Storage.setTransactions(Transaction.all.reverse());
   },
   reload() {
     myDonutChart.destroy();

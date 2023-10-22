@@ -132,7 +132,7 @@
           <div>
             <i
               class="material-icons delete-icon"
-              onclick="deleteTransaction()"
+              onclick="deleteCategory()"
             >
               delete
             </i>
@@ -144,11 +144,9 @@
               close
             </span>
           </div>
-
-
           </div>
           
-          <form action="" onsubmit="Form.submit(event)">
+          <form action="" onsubmit="CategoryForom.submit(event)">
             <div class="input-group">
               <label class="sr-only" for="name">Name</label>
               <input
@@ -162,14 +160,14 @@
             <div class="buttons-income-expense">
               <button
                 id="incomeButton"
-                onclick="Form.setIncome();  return false;"
+                onclick="CategoryForom.setIncome();  return false;"
                 class="income"
               >
                 Income
               </button>
               <button
                 id="expenseButton"
-                onclick="Form.setExpense(); return false;"
+                onclick="CategoryForom.setExpense(); return false;"
               >
                 Expense
               </button>
